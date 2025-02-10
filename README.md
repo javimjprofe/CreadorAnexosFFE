@@ -26,5 +26,7 @@ El programa solicitará que se elija entre las dos posibles opciones mediante un
 
 
 # Resultado de la ejecución
+
 Para el **Anexo I** se creará una carpeta cuyo nombre sea la unión del código del ciclo y del módulo, y dentro se almacenrá un fichero por cada alumno.
+
 Para el **Anexo II** se creará una carpeta cuyo nombre sea el código del ciclo, y dentro se almacenrá un fichero por cada alumno.
