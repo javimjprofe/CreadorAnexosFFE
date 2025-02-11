@@ -33,8 +33,8 @@ Para el **Anexo II** se creará una carpeta cuyo nombre sea el código del ciclo
 
 
 # Descargar y ejecutar el programa
-- Descargar solo el fichero CreadorAnexosFFE.zip desde este link <https://github.com/javimjprofe/CreadorAnexosFFE/blob/main/CreadorAnexosFFE.zip> (Pulsar el botón con los tres puntos y seleccionar "Download")
 - Necesitas tener instalada al menos la versión 19 de Java en tu ordenador. Si no lo tienes te recomiendo que descargues e instales la versión 21 desde esta página <https://www.oracle.com/java/technologies/downloads/#jdk21-windows>
+- Descargar solo el fichero CreadorAnexosFFE.zip desde este link <https://github.com/javimjprofe/CreadorAnexosFFE/blob/main/CreadorAnexosFFE.zip> (Pulsar el botón con los tres puntos y seleccionar "Download")
 - Descomprime el fichero en una carpteta
 - Configuralos los tres ficheros anteriormente nombrados con tus necesidades
 - Abre la consola de comandos en la carpeta que se encuentre el fichero CreadorAnexosFFE.jar
