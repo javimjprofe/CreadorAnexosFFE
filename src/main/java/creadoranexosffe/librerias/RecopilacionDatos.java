@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package creadoranexosffe.librerias;
-import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +15,10 @@ public class RecopilacionDatos {
     public List<String[]> recopilarAlumnos() {
         Scanner scanner;
         String linea;
-        //File file;
         InputStream file;
         List<String[]> alumnos = new ArrayList<>();
 
         try {
-            //file = new File("./modelos/alumnos.csv");
             file = getClass().getResourceAsStream("/modelos/alumnos.csv");
             scanner = new Scanner(file);
 
@@ -45,11 +42,9 @@ public class RecopilacionDatos {
         Scanner scanner;
         String linea;
         List<String[]> datos = new ArrayList<>();
-                //File file;
         InputStream file;
 
         try {
-            //file = new File("./modelos/modulos.csv");
             file = getClass().getResourceAsStream("/modelos/modulos.csv");
             scanner = new Scanner(file);
 
@@ -72,7 +67,6 @@ public class RecopilacionDatos {
         Scanner scanner;
         String linea;
         List<String> datos = new ArrayList<>();
-        //File file;
         InputStream file;
         //****Datos Comunes****
         //CodigoCiclo
@@ -87,7 +81,6 @@ public class RecopilacionDatos {
         //FechaSesion
 
         try {
-            //file = new File("./modelos/datosComunes.txt");
             file = getClass().getResourceAsStream("/modelos/datosComunes.txt");
             scanner = new Scanner(file);
 
