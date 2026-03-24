@@ -8,6 +8,21 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>25</maven.compiler.release>
-        <exec.mainClass>javimjprofe.creadoranexosffe.CreadorAnexosFFE</exec.mainClass>
+        <exec.mainClass>creadoranexosffe.CreadorAnexosFFE</exec.mainClass>
     </properties>
+    <dependencies>
+        <!-- Core Modern con paquetes org.openpdf -->
+        <dependency>
+            <groupId>com.github.librepdf</groupId>
+            <artifactId>openpdf-core-modern</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
+        <!-- (Opcional) para mantener compatibilidad con legacy -->
+        <dependency>
+            <groupId>com.github.librepdf</groupId>
+            <artifactId>openpdf</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+    </dependencies>
 </project>
