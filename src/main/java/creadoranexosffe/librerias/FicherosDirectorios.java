@@ -3,15 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package creadoranexosffe.librerias;
+
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
 /**
  *
  * @author javimjprofe
  */
 public class FicherosDirectorios {
-    
+
     public static String crearCarpeta(String ruta) {
         Path carpeta = Path.of(ruta);
 
@@ -34,5 +38,19 @@ public class FicherosDirectorios {
 
     public static String generarNombreFicheroAnexo2(String nombreAlumno, String ciclo) {
         return nombreAlumno + "_" + ciclo + "_ANEXOII.pdf";
+    }
+
+    public static File obtenerRutaAplicacion() {
+        try {
+            return new File(
+                    FicherosDirectorios.class
+                            .getProtectionDomain()
+                            .getCodeSource()
+                            .getLocation()
+                            .toURI()
+            ).getParentFile();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException("No se pudo determinar la ruta del ejecutable");
+        }
     }
 }

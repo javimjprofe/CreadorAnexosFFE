@@ -13,16 +13,15 @@ import java.util.Scanner;
  * @author javimjprofe
  */
 public class RecopilacionDatos {
-    public List<String[]> recopilarAlumnos() {
+  
+    public static List<String[]> recopilarAlumnos() {
         Scanner scanner;
         String linea;
-        //File file;
-        InputStream file;
+        File file;
         List<String[]> alumnos = new ArrayList<>();
 
         try {
-            //file = new File("./modelos/alumnos.csv");
-            file = getClass().getResourceAsStream("/modelos/alumnos.csv");
+            file = new File("./datos/alumnos.csv");
             scanner = new Scanner(file);
 
             while (scanner.hasNext()) {
@@ -41,16 +40,14 @@ public class RecopilacionDatos {
         }
     }
 
-    public List<String[]> recopilarDatosModulos() {
+    public static List<String[]> recopilarDatosModulos() {
         Scanner scanner;
         String linea;
         List<String[]> datos = new ArrayList<>();
-                //File file;
-        InputStream file;
+        File file;
 
         try {
-            //file = new File("./modelos/modulos.csv");
-            file = getClass().getResourceAsStream("/modelos/modulos.csv");
+            file = new File("./datos/modulos.csv");
             scanner = new Scanner(file);
 
             while (scanner.hasNext()) {
@@ -68,12 +65,11 @@ public class RecopilacionDatos {
         }
     }
 
-    public List<String> recopilarDatosComunes() {
+    public static List<String> recopilarDatosComunes() {
         Scanner scanner;
         String linea;
         List<String> datos = new ArrayList<>();
-        //File file;
-        InputStream file;
+        File file;
         //****Datos Comunes****
         //CodigoCiclo
         //Ciclo
@@ -87,8 +83,7 @@ public class RecopilacionDatos {
         //FechaSesion
 
         try {
-            //file = new File("./modelos/datosComunes.txt");
-            file = getClass().getResourceAsStream("/modelos/datosComunes.txt");
+            file = new File("./datos/datosComunes.txt");
             scanner = new Scanner(file);
 
             while (scanner.hasNext()) {
