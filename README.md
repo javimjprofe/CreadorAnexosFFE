@@ -1,5 +1,5 @@
 # Configuración
-El proyecto cuenta con tres ficheros desde los que extrae la información necesaria:
+El proyecto cuenta con una carpeta "datos" que incluye tres ficheros desde los que extrae la información necesaria:
 1. **alumnos.csv** donde se almacenarán en cada línea dos campos referentes a los alumnos. Ambos separados por el caracter ";"
   - Nombre
   - Apellidos
@@ -33,9 +33,9 @@ Para el **Anexo II** se creará una carpeta cuyo nombre sea el código del ciclo
 
 
 # Descargar y ejecutar el programa
-- Necesitas tener instalada al menos la versión 19 de Java en tu ordenador. Si no lo tienes te recomiendo que descargues e instales la versión 21 desde esta página <https://www.oracle.com/es/java/technologies/downloads/#java25>
-- Descargar solo el fichero CreadorAnexosFFE.zip desde este link <https://github.com/javimjprofe/CreadorAnexosFFE/blob/main/CreadorAnexosFFE.zip> (Pulsar el botón con los tres puntos y seleccionar "Download")
-- Descomprime el fichero en una carpteta
-- Configuralos los tres ficheros anteriormente nombrados con tus necesidades
+- Necesitas tener instalada la versión 25 de Java en tu ordenador. Si no lo tienes te recomiendo que la descargues e instales desde esta página <https://www.oracle.com/es/java/technologies/downloads/#java25>
+- Descargar solo el fichero CreadorAnexosFFE.zip desde este link <https://github.com/javimjprofe/CreadorAnexosFFE/blob/Release/CreadorAnexosFFE.zip> (Pulsar el botón con los tres puntos y seleccionar "Download")
+- Descomprime el fichero en una carpeta
+- Configura los tres ficheros anteriormente nombrados según tus necesidades
 - Abre la consola de comandos en la carpeta que se encuentre el fichero CreadorAnexosFFE.jar
 - Ejecuta el siguiente comando "java -jar CreadorAnexosFFE.jar"
