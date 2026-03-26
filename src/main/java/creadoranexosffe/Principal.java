@@ -28,18 +28,197 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGrpTipoAnexo = new javax.swing.ButtonGroup();
+        pnlTipoAnexo = new javax.swing.JPanel();
+        rdbAnexoI = new javax.swing.JRadioButton();
+        rdbAnexoII = new javax.swing.JRadioButton();
+        pnlDatosComunes = new javax.swing.JPanel();
+        lblCodigoCiclo = new javax.swing.JLabel();
+        txtCodigoCiclo = new javax.swing.JTextField();
+        lblNombreCiclo = new javax.swing.JLabel();
+        txtNombreCiclo = new javax.swing.JTextField();
+        lblGrupo = new javax.swing.JLabel();
+        txtGrupo = new javax.swing.JTextField();
+        lblAnyoEscolar = new javax.swing.JLabel();
+        spnCurso = new javax.swing.JSpinner();
+        spnIniAnyoEscolar = new javax.swing.JSpinner();
+        lblBarraAnyoEscolar = new javax.swing.JLabel();
+        spnFinAnioEscolar = new javax.swing.JSpinner();
+        lblCurso = new javax.swing.JLabel();
+        lblPobalcion = new javax.swing.JLabel();
+        txtPoblacion = new javax.swing.JTextField();
+        lblFechaSesion = new javax.swing.JLabel();
+        spnFechaSesion = new javax.swing.JSpinner();
+        lblFechaFirma = new javax.swing.JLabel();
+        spnFechaFirma = new javax.swing.JSpinner();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Creador Anexos FFE");
+        setName("frmPrincipal"); // NOI18N
+
+        pnlTipoAnexo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de Anexo a Rellenar"));
+
+        btnGrpTipoAnexo.add(rdbAnexoI);
+        rdbAnexoI.setSelected(true);
+        rdbAnexoI.setText("Anexo I");
+
+        rdbAnexoII.setText("Anexo II");
+
+        javax.swing.GroupLayout pnlTipoAnexoLayout = new javax.swing.GroupLayout(pnlTipoAnexo);
+        pnlTipoAnexo.setLayout(pnlTipoAnexoLayout);
+        pnlTipoAnexoLayout.setHorizontalGroup(
+            pnlTipoAnexoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTipoAnexoLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(rdbAnexoI)
+                .addGap(18, 18, 18)
+                .addComponent(rdbAnexoII)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+        pnlTipoAnexoLayout.setVerticalGroup(
+            pnlTipoAnexoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTipoAnexoLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(pnlTipoAnexoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rdbAnexoI)
+                    .addComponent(rdbAnexoII))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        pnlDatosComunes.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Comunes"));
+
+        lblCodigoCiclo.setText("Código Ciclo: ");
+
+        lblNombreCiclo.setText("Nombre del Ciclo: ");
+
+        lblGrupo.setText("Grupo: ");
+
+        lblAnyoEscolar.setText("Año Escolar: ");
+
+        spnCurso.setModel(new javax.swing.SpinnerNumberModel(1, 1, 2, 1));
+        spnCurso.setName("spnCurso"); // NOI18N
+
+        spnIniAnyoEscolar.setModel(new javax.swing.SpinnerNumberModel(2025, 2025, 2100, 1));
+
+        lblBarraAnyoEscolar.setText("/");
+
+        spnFinAnioEscolar.setModel(new javax.swing.SpinnerNumberModel(2026, 2026, 2100, 1));
+
+        lblCurso.setText("Curso: ");
+
+        lblPobalcion.setText("Población: ");
+
+        lblFechaSesion.setText("Fecha Sesión de Evaluación");
+
+        spnFechaSesion.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), new java.util.Date(1756677600000L), new java.util.Date(4133977140000L), java.util.Calendar.DAY_OF_MONTH));
+        spnFechaSesion.setEditor(new javax.swing.JSpinner.DateEditor(spnFechaSesion, "dd/MMyyyy"));
+
+        lblFechaFirma.setText("Fecha de Firma: ");
+
+        spnFechaFirma.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), new java.util.Date(1756677600000L), new java.util.Date(4133977140000L), java.util.Calendar.DAY_OF_MONTH));
+        spnFechaFirma.setEditor(new javax.swing.JSpinner.DateEditor(spnFechaFirma, "dd/MMyyyy"));
+
+        javax.swing.GroupLayout pnlDatosComunesLayout = new javax.swing.GroupLayout(pnlDatosComunes);
+        pnlDatosComunes.setLayout(pnlDatosComunesLayout);
+        pnlDatosComunesLayout.setHorizontalGroup(
+            pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDatosComunesLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlDatosComunesLayout.createSequentialGroup()
+                        .addComponent(lblCodigoCiclo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCodigoCiclo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblNombreCiclo)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNombreCiclo))
+                    .addGroup(pnlDatosComunesLayout.createSequentialGroup()
+                        .addGroup(pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(pnlDatosComunesLayout.createSequentialGroup()
+                                .addComponent(lblPobalcion)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtPoblacion))
+                            .addGroup(pnlDatosComunesLayout.createSequentialGroup()
+                                .addComponent(lblAnyoEscolar)
+                                .addGap(18, 18, 18)
+                                .addComponent(spnIniAnyoEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblBarraAnyoEscolar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(spnFinAnioEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblCurso)
+                        .addGap(18, 18, 18)
+                        .addComponent(spnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblGrupo)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(pnlDatosComunesLayout.createSequentialGroup()
+                            .addComponent(lblFechaFirma)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(spnFechaFirma, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnlDatosComunesLayout.createSequentialGroup()
+                            .addComponent(lblFechaSesion)
+                            .addGap(18, 18, 18)
+                            .addComponent(spnFechaSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(530, Short.MAX_VALUE))
+        );
+        pnlDatosComunesLayout.setVerticalGroup(
+            pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDatosComunesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCodigoCiclo)
+                    .addComponent(txtCodigoCiclo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNombreCiclo)
+                    .addComponent(txtNombreCiclo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGrupo)
+                    .addComponent(txtGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAnyoEscolar)
+                    .addComponent(spnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnIniAnyoEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBarraAnyoEscolar)
+                    .addComponent(spnFinAnioEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCurso))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPobalcion)
+                    .addComponent(txtPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaSesion)
+                    .addComponent(spnFechaSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaFirma)
+                    .addComponent(spnFechaFirma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 794, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlTipoAnexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlDatosComunes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 474, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(pnlTipoAnexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlDatosComunes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         pack();
@@ -71,5 +250,28 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btnGrpTipoAnexo;
+    private javax.swing.JLabel lblAnyoEscolar;
+    private javax.swing.JLabel lblBarraAnyoEscolar;
+    private javax.swing.JLabel lblCodigoCiclo;
+    private javax.swing.JLabel lblCurso;
+    private javax.swing.JLabel lblFechaFirma;
+    private javax.swing.JLabel lblFechaSesion;
+    private javax.swing.JLabel lblGrupo;
+    private javax.swing.JLabel lblNombreCiclo;
+    private javax.swing.JLabel lblPobalcion;
+    private javax.swing.JPanel pnlDatosComunes;
+    private javax.swing.JPanel pnlTipoAnexo;
+    private javax.swing.JRadioButton rdbAnexoI;
+    private javax.swing.JRadioButton rdbAnexoII;
+    private javax.swing.JSpinner spnCurso;
+    private javax.swing.JSpinner spnFechaFirma;
+    private javax.swing.JSpinner spnFechaSesion;
+    private javax.swing.JSpinner spnFinAnioEscolar;
+    private javax.swing.JSpinner spnIniAnyoEscolar;
+    private javax.swing.JTextField txtCodigoCiclo;
+    private javax.swing.JTextField txtGrupo;
+    private javax.swing.JTextField txtNombreCiclo;
+    private javax.swing.JTextField txtPoblacion;
     // End of variables declaration//GEN-END:variables
 }
