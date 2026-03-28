@@ -32,12 +32,15 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="pnlDatosComunes" max="32767" attributes="0"/>
-                  <Component id="pnlTipoAnexo" min="-2" max="-2" attributes="0"/>
                   <Component id="pnlAlumnos" alignment="0" max="32767" attributes="0"/>
                   <Component id="pnlModulos" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="pnlTipoAnexo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="pnlDatosComunes" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,14 +48,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Component id="pnlTipoAnexo" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="pnlDatosComunes" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlTipoAnexo" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="pnlDatosComunes" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="pnlAlumnos" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="pnlModulos" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,7 +66,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Tipo de Anexo a Rellenar"/>
+            <TitledBorder title="Tipo de Anexos"/>
           </Border>
         </Property>
       </Properties>
@@ -72,10 +76,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                  <Component id="rdbAnexoI" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="rdbAnexoII" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="56" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="rdbAnexoII" min="-2" max="-2" attributes="0"/>
+                      <Component id="rdbAnexoI" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="76" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -83,11 +88,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="rdbAnexoI" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rdbAnexoII" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <Component id="rdbAnexoI" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="rdbAnexoII" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="49" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -124,6 +128,28 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="lblFechaSesion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="spnFechaSesion" min="-2" pref="96" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lblFechaFirma" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="spnFechaFirma" min="-2" pref="96" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblCurso" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="spnCurso" min="-2" pref="54" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lblGrupo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txtGrupo" min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lblPobalcion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txtPoblacion" min="-2" pref="178" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lblCodigoCiclo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -140,30 +166,9 @@
                           <Component id="lblBarraAnyoEscolar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="spnFinAnioEscolar" min="-2" pref="75" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="lblCurso" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="spnCurso" min="-2" pref="54" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="lblGrupo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtGrupo" min="-2" pref="35" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblPobalcion" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtPoblacion" min="-2" pref="178" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="lblFechaSesion" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="spnFechaSesion" min="-2" pref="96" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="lblFechaFirma" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="spnFechaFirma" min="-2" pref="96" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -180,21 +185,22 @@
                       <Component id="spnIniAnyoEscolar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblBarraAnyoEscolar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="spnFinAnioEscolar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblGrupo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtGrupo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnCurso" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblCurso" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblPobalcion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtPoblacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCurso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnCurso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblGrupo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtGrupo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblFechaSesion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="spnFechaSesion" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                          <Component id="lblFechaFirma" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="spnFechaFirma" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lblFechaFirma" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnFechaFirma" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -321,16 +327,21 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="lblApellidosAlumno" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtApellidosAlumno" min="-2" pref="468" max="-2" attributes="0"/>
+                          <Component id="txtApellidosAlumno" min="-2" pref="572" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPane1" min="-2" pref="903" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnEliminarAlumno" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnAnyadirAlumno" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEliminarAlumno" max="32767" attributes="0"/>
+                      <Component id="btnVaciarTablaAlumnos" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnImportarAlumno" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnAnyadirAlumno" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -346,11 +357,17 @@
                       <Component id="btnAnyadirAlumno" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="btnImportarAlumno" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnEliminarAlumno" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnVaciarTablaAlumnos" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Component id="jScrollPane1" min="-2" pref="220" max="-2" attributes="0"/>
-                      <Component id="btnEliminarAlumno" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -399,6 +416,16 @@
             <Property name="text" type="java.lang.String" value="Eliminar Alumno"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JButton" name="btnImportarAlumno">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Importar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnVaciarTablaAlumnos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vaciar Tabla"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlModulos">
@@ -415,7 +442,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="lblCodigoModulo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -425,12 +452,14 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txtNombreModulo" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane2" min="-2" pref="882" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnAnyadirModulo" alignment="1" min="-2" pref="123" max="-2" attributes="0"/>
-                      <Component id="btnEliminarModulo" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnAnyadirModulo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnEliminarModulo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnImportarModulo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnVaciarTablaModulos" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
@@ -448,11 +477,17 @@
                       <Component id="btnAnyadirModulo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="jScrollPane2" min="-2" pref="120" max="-2" attributes="0"/>
-                      <Component id="btnEliminarModulo" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="btnImportarModulo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnEliminarModulo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnVaciarTablaModulos" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="19" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -499,6 +534,16 @@
         <Component class="javax.swing.JButton" name="btnEliminarModulo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar M&#xf3;dulo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnImportarModulo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Importar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnVaciarTablaModulos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vaciar Tabla"/>
           </Properties>
         </Component>
       </SubComponents>

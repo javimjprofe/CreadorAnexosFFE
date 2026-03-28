@@ -60,6 +60,8 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAlumnos = new javax.swing.JTable();
         btnEliminarAlumno = new javax.swing.JButton();
+        btnImportarAlumno = new javax.swing.JButton();
+        btnVaciarTablaAlumnos = new javax.swing.JButton();
         pnlModulos = new javax.swing.JPanel();
         lblNombreModulo = new javax.swing.JLabel();
         txtCodigoModulo = new javax.swing.JTextField();
@@ -69,12 +71,14 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblModulos = new javax.swing.JTable();
         btnEliminarModulo = new javax.swing.JButton();
+        btnImportarModulo = new javax.swing.JButton();
+        btnVaciarTablaModulos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Creador Anexos FFE");
         setName("frmPrincipal"); // NOI18N
 
-        pnlTipoAnexo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de Anexo a Rellenar"));
+        pnlTipoAnexo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de Anexos"));
 
         btnGrpTipoAnexo.add(rdbAnexoI);
         rdbAnexoI.setSelected(true);
@@ -88,19 +92,19 @@ public class Principal extends javax.swing.JFrame {
             pnlTipoAnexoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTipoAnexoLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(rdbAnexoI)
-                .addGap(18, 18, 18)
-                .addComponent(rdbAnexoII)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGroup(pnlTipoAnexoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rdbAnexoII)
+                    .addComponent(rdbAnexoI))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         pnlTipoAnexoLayout.setVerticalGroup(
             pnlTipoAnexoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTipoAnexoLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(pnlTipoAnexoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdbAnexoI)
-                    .addComponent(rdbAnexoII))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(rdbAnexoI)
+                .addGap(18, 18, 18)
+                .addComponent(rdbAnexoII)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pnlDatosComunes.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Comunes"));
@@ -144,6 +148,26 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDatosComunesLayout.createSequentialGroup()
+                        .addComponent(lblFechaSesion)
+                        .addGap(18, 18, 18)
+                        .addComponent(spnFechaSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblFechaFirma)
+                        .addGap(18, 18, 18)
+                        .addComponent(spnFechaFirma, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDatosComunesLayout.createSequentialGroup()
+                        .addComponent(lblCurso)
+                        .addGap(18, 18, 18)
+                        .addComponent(spnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblGrupo)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPobalcion)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDatosComunesLayout.createSequentialGroup()
                         .addComponent(lblCodigoCiclo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCodigoCiclo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,28 +182,8 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblBarraAnyoEscolar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(spnFinAnioEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblCurso)
-                        .addGap(18, 18, 18)
-                        .addComponent(spnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblGrupo)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlDatosComunesLayout.createSequentialGroup()
-                        .addComponent(lblPobalcion)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblFechaSesion)
-                        .addGap(18, 18, 18)
-                        .addComponent(spnFechaSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblFechaFirma)
-                        .addGap(18, 18, 18)
-                        .addComponent(spnFechaFirma, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(spnFinAnioEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlDatosComunesLayout.setVerticalGroup(
             pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,20 +197,21 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(lblAnyoEscolar)
                     .addComponent(spnIniAnyoEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblBarraAnyoEscolar)
-                    .addComponent(spnFinAnioEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblGrupo)
-                    .addComponent(txtGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCurso))
+                    .addComponent(spnFinAnioEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPobalcion)
                     .addComponent(txtPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCurso)
+                    .addComponent(spnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGrupo)
+                    .addComponent(txtGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaSesion)
                     .addComponent(spnFechaSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblFechaFirma)
-                        .addComponent(spnFechaFirma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblFechaFirma)
+                    .addComponent(spnFechaFirma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -238,6 +243,10 @@ public class Principal extends javax.swing.JFrame {
 
         btnEliminarAlumno.setText("Eliminar Alumno");
 
+        btnImportarAlumno.setText("Importar");
+
+        btnVaciarTablaAlumnos.setText("Vaciar Tabla");
+
         javax.swing.GroupLayout pnlAlumnosLayout = new javax.swing.GroupLayout(pnlAlumnos);
         pnlAlumnos.setLayout(pnlAlumnosLayout);
         pnlAlumnosLayout.setHorizontalGroup(
@@ -252,13 +261,17 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lblApellidosAlumno)
                         .addGap(18, 18, 18)
-                        .addComponent(txtApellidosAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
+                        .addComponent(txtApellidosAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlAlumnosLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 903, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 1, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(pnlAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEliminarAlumno, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAnyadirAlumno, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(22, 22, 22))
+                    .addComponent(btnEliminarAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVaciarTablaAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnImportarAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAnyadirAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
         pnlAlumnosLayout.setVerticalGroup(
             pnlAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,10 +284,15 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(txtApellidosAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAnyadirAlumno))
                 .addGap(18, 18, 18)
-                .addGroup(pnlAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminarAlumno))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(pnlAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(pnlAlumnosLayout.createSequentialGroup()
+                        .addComponent(btnImportarAlumno)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminarAlumno)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVaciarTablaAlumnos))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlModulos.setBorder(javax.swing.BorderFactory.createTitledBorder("Módulos"));
@@ -305,13 +323,17 @@ public class Principal extends javax.swing.JFrame {
 
         btnEliminarModulo.setText("Eliminar Módulo");
 
+        btnImportarModulo.setText("Importar");
+
+        btnVaciarTablaModulos.setText("Vaciar Tabla");
+
         javax.swing.GroupLayout pnlModulosLayout = new javax.swing.GroupLayout(pnlModulos);
         pnlModulos.setLayout(pnlModulosLayout);
         pnlModulosLayout.setHorizontalGroup(
             pnlModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlModulosLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(pnlModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnlModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlModulosLayout.createSequentialGroup()
                         .addComponent(lblCodigoModulo)
                         .addGap(18, 18, 18)
@@ -320,11 +342,13 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(lblNombreModulo)
                         .addGap(18, 18, 18)
                         .addComponent(txtNombreModulo))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAnyadirModulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminarModulo, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jScrollPane2))
+                .addGap(18, 18, 18)
+                .addGroup(pnlModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAnyadirModulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEliminarModulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnImportarModulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVaciarTablaModulos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         pnlModulosLayout.setVerticalGroup(
@@ -338,10 +362,15 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(txtNombreModulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAnyadirModulo))
                 .addGap(18, 18, 18)
-                .addGroup(pnlModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pnlModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminarModulo))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addGroup(pnlModulosLayout.createSequentialGroup()
+                        .addComponent(btnImportarModulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminarModulo)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVaciarTablaModulos)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -351,24 +380,26 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlDatosComunes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlTipoAnexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlModulos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(pnlModulos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlTipoAnexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlDatosComunes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(pnlTipoAnexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlDatosComunes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlTipoAnexo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlDatosComunes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(pnlAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlModulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -405,6 +436,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarAlumno;
     private javax.swing.JButton btnEliminarModulo;
     private javax.swing.ButtonGroup btnGrpTipoAnexo;
+    private javax.swing.JButton btnImportarAlumno;
+    private javax.swing.JButton btnImportarModulo;
+    private javax.swing.JButton btnVaciarTablaAlumnos;
+    private javax.swing.JButton btnVaciarTablaModulos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAnyoEscolar;
