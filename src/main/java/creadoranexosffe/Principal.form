@@ -108,6 +108,9 @@
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Anexo I"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdbAnexoIActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rdbAnexoII">
           <Properties>
@@ -116,6 +119,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Anexo II"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdbAnexoIIActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnGenerarAnexos">
           <Properties>
@@ -474,7 +480,7 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btnAnyadirModulo" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnEliminarModulo" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnImportarModulo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnImportarModulos" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnVaciarTablaModulos" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -496,7 +502,7 @@
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="jScrollPane2" min="-2" pref="120" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="btnImportarModulo" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnImportarModulos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnEliminarModulo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -561,7 +567,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnImportarModulo">
+        <Component class="javax.swing.JButton" name="btnImportarModulos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Importar"/>
             <Property name="enabled" type="boolean" value="false"/>

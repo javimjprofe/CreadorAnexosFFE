@@ -72,7 +72,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblModulos = new javax.swing.JTable();
         btnEliminarModulo = new javax.swing.JButton();
-        btnImportarModulo = new javax.swing.JButton();
+        btnImportarModulos = new javax.swing.JButton();
         btnVaciarTablaModulos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,9 +84,11 @@ public class Principal extends javax.swing.JFrame {
         btnGrpTipoAnexo.add(rdbAnexoI);
         rdbAnexoI.setSelected(true);
         rdbAnexoI.setText("Anexo I");
+        rdbAnexoI.addActionListener(this::rdbAnexoIActionPerformed);
 
         btnGrpTipoAnexo.add(rdbAnexoII);
         rdbAnexoII.setText("Anexo II");
+        rdbAnexoII.addActionListener(this::rdbAnexoIIActionPerformed);
 
         btnGenerarAnexos.setText("Generar Anexos");
 
@@ -340,8 +342,8 @@ public class Principal extends javax.swing.JFrame {
         btnEliminarModulo.setText("Eliminar Módulo");
         btnEliminarModulo.setEnabled(false);
 
-        btnImportarModulo.setText("Importar");
-        btnImportarModulo.setEnabled(false);
+        btnImportarModulos.setText("Importar");
+        btnImportarModulos.setEnabled(false);
 
         btnVaciarTablaModulos.setText("Vaciar Tabla");
         btnVaciarTablaModulos.setEnabled(false);
@@ -366,7 +368,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(pnlModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAnyadirModulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminarModulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnImportarModulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnImportarModulos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVaciarTablaModulos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
@@ -384,7 +386,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(pnlModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlModulosLayout.createSequentialGroup()
-                        .addComponent(btnImportarModulo)
+                        .addComponent(btnImportarModulos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEliminarModulo)
                         .addGap(18, 18, 18)
@@ -424,6 +426,30 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void rdbAnexoIIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAnexoIIActionPerformed
+        if(rdbAnexoII.isSelected()){
+            txtCodigoModulo.setEnabled(true);
+            txtNombreModulo.setEnabled(true);
+            btnAnyadirModulo.setEnabled(true);
+            btnImportarModulos.setEnabled(true);
+            btnEliminarModulo.setEnabled(true);
+            btnVaciarTablaModulos.setEnabled(true);
+            tblModulos.setEnabled(true);
+        }
+    }//GEN-LAST:event_rdbAnexoIIActionPerformed
+
+    private void rdbAnexoIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAnexoIActionPerformed
+        if(rdbAnexoI.isSelected()){
+            txtCodigoModulo.setEnabled(false);
+            txtNombreModulo.setEnabled(false);
+            btnAnyadirModulo.setEnabled(false);
+            btnImportarModulos.setEnabled(false);
+            btnEliminarModulo.setEnabled(false);
+            btnVaciarTablaModulos.setEnabled(false);
+            tblModulos.setEnabled(false);
+        }
+    }//GEN-LAST:event_rdbAnexoIActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -457,7 +483,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnGenerarAnexos;
     private javax.swing.ButtonGroup btnGrpTipoAnexo;
     private javax.swing.JButton btnImportarAlumno;
-    private javax.swing.JButton btnImportarModulo;
+    private javax.swing.JButton btnImportarModulos;
     private javax.swing.JButton btnVaciarTablaAlumnos;
     private javax.swing.JButton btnVaciarTablaModulos;
     private javax.swing.JScrollPane jScrollPane1;
