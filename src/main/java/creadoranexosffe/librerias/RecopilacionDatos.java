@@ -4,7 +4,6 @@
  */
 package creadoranexosffe.librerias;
 import java.io.File;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,15 +13,14 @@ import java.util.Scanner;
  */
 public class RecopilacionDatos {
   
-    public static List<String[]> recopilarAlumnos() {
+    public static List<Alumno> recopilarAlumnos(File fichero) {
         Scanner scanner;
         String linea;
         File file;
-        List<String[]> alumnos = new ArrayList<>();
+        List<Alumno> alumnos = new ArrayList<Alumno>();
 
         try {
-            file = new File("./datos/alumnos.csv");
-            scanner = new Scanner(file);
+            scanner = new Scanner(fichero);
 
             while (scanner.hasNext()) {
                 linea = scanner.nextLine();
@@ -30,7 +28,7 @@ public class RecopilacionDatos {
                     break;
                 String[] lineaDividida = linea.split(";");
                 //Nombre;Apellidos
-                alumnos.add(lineaDividida);
+                alumnos.add(new Alumno(lineaDividida[0], lineaDividida[1]));
             }
             scanner.close();
             return alumnos;

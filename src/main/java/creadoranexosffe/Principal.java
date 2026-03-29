@@ -5,7 +5,11 @@
 package creadoranexosffe;
 
 import creadoranexosffe.librerias.Alumno;
+import creadoranexosffe.librerias.RecopilacionDatos;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,13 +19,12 @@ import javax.swing.table.DefaultTableModel;
 public class Principal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
-    private ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
+    private List<Alumno> alumnos = new ArrayList<Alumno>();
     /**
      * Creates new form Principal
      */
     public Principal() {
-        initComponents();
-        
+        initComponents();        
     }
 
     /**
@@ -257,15 +260,28 @@ public class Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tblAlumnosMouseReleased(evt);
+            }
+        });
+        tblAlumnos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblAlumnosKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblAlumnos);
 
         btnEliminarAlumno.setText("Eliminar Alumno");
         btnEliminarAlumno.setEnabled(false);
+        btnEliminarAlumno.addActionListener(this::btnEliminarAlumnoActionPerformed);
 
         btnImportarAlumno.setText("Importar");
+        btnImportarAlumno.addActionListener(this::btnImportarAlumnoActionPerformed);
 
         btnVaciarTablaAlumnos.setText("Vaciar Tabla");
         btnVaciarTablaAlumnos.setEnabled(false);
+        btnVaciarTablaAlumnos.addActionListener(this::btnVaciarTablaAlumnosActionPerformed);
 
         javax.swing.GroupLayout pnlAlumnosLayout = new javax.swing.GroupLayout(pnlAlumnos);
         pnlAlumnos.setLayout(pnlAlumnosLayout);
@@ -440,8 +456,6 @@ public class Principal extends javax.swing.JFrame {
             txtNombreModulo.setEnabled(true);
             btnAnyadirModulo.setEnabled(true);
             btnImportarModulos.setEnabled(true);
-            btnEliminarModulo.setEnabled(true);
-            btnVaciarTablaModulos.setEnabled(true);
             tblModulos.setEnabled(true);
         }
     }//GEN-LAST:event_rdbAnexoIIActionPerformed
@@ -455,6 +469,7 @@ public class Principal extends javax.swing.JFrame {
             btnEliminarModulo.setEnabled(false);
             btnVaciarTablaModulos.setEnabled(false);
             tblModulos.setEnabled(false);
+            tblModulos.clearSelection();
         }
     }//GEN-LAST:event_rdbAnexoIActionPerformed
 
@@ -462,7 +477,63 @@ public class Principal extends javax.swing.JFrame {
         if(!anyadirAlumno(txtNombreAlumno.getText().trim(), txtApellidosAlumno.getText().trim())){
             //Mensaje error
         }
+        else{
+            txtNombreAlumno.setText("");
+            txtApellidosAlumno.setText("");
+            btnVaciarTablaAlumnos.setEnabled(true);
+        }
     }//GEN-LAST:event_btnAnyadirAlumnoActionPerformed
+
+    private void tblAlumnosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAlumnosMouseReleased
+        btnEliminarAlumno.setEnabled(tblAlumnos.getSelectedRow() > -1);
+    }//GEN-LAST:event_tblAlumnosMouseReleased
+
+    private void tblAlumnosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblAlumnosKeyReleased
+        btnEliminarAlumno.setEnabled(tblAlumnos.getSelectedRow() > -1);
+    }//GEN-LAST:event_tblAlumnosKeyReleased
+
+    private void btnEliminarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAlumnoActionPerformed
+        int filaSeleccionada = tblAlumnos.getSelectedRow();
+        DefaultTableModel modelo;
+        if( filaSeleccionada > -1){
+            modelo = (DefaultTableModel) tblAlumnos.getModel();
+            modelo.removeRow(filaSeleccionada);
+            alumnos.remove(filaSeleccionada);
+            tblAlumnos.clearSelection();
+            btnEliminarAlumno.setEnabled(false);
+            btnVaciarTablaAlumnos.setEnabled(alumnos.size()>0);
+        } else {
+            //Mensaje error
+        }
+    }//GEN-LAST:event_btnEliminarAlumnoActionPerformed
+
+    private void btnVaciarTablaAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVaciarTablaAlumnosActionPerformed
+        DefaultTableModel modelo = new DefaultTableModel();
+        String[] cabecera = {"Nombre", "Apellidos"};
+        modelo.setColumnIdentifiers(cabecera);
+        tblAlumnos.setModel(modelo);
+        btnEliminarAlumno.setEnabled(false);
+        btnVaciarTablaAlumnos.setEnabled(false);
+        alumnos.clear();
+    }//GEN-LAST:event_btnVaciarTablaAlumnosActionPerformed
+
+    private void btnImportarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarAlumnoActionPerformed
+        File fichero;
+        List<Alumno> alumnosAAnyadir;
+        JFileChooser fc = new JFileChooser();
+        int seleccion = fc.showOpenDialog(this);
+        
+        if(seleccion == JFileChooser.APPROVE_OPTION){
+            fichero = fc.getSelectedFile();
+            alumnosAAnyadir = RecopilacionDatos.recopilarAlumnos(fichero);
+            for(Alumno alumno : alumnosAAnyadir){
+                if(!anyadirAlumno(alumno.getNombre(), alumno.getApellidos())){
+                    //Mensaje error
+                }
+            }
+            btnVaciarTablaAlumnos.setEnabled(alumnos.size() > 0);
+        }
+    }//GEN-LAST:event_btnImportarAlumnoActionPerformed
 
     /**
      * @param args the command line arguments

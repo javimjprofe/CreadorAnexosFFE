@@ -433,6 +433,10 @@
                   </Table>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblAlumnosMouseReleased"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblAlumnosKeyReleased"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -441,17 +445,26 @@
             <Property name="text" type="java.lang.String" value="Eliminar Alumno"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarAlumnoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnImportarAlumno">
           <Properties>
             <Property name="text" type="java.lang.String" value="Importar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImportarAlumnoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnVaciarTablaAlumnos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Vaciar Tabla"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVaciarTablaAlumnosActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
