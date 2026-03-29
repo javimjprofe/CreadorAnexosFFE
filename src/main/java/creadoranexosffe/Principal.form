@@ -413,6 +413,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="A&#xf1;adir Alumno"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnyadirAlumnoActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -436,6 +439,7 @@
         <Component class="javax.swing.JButton" name="btnEliminarAlumno">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar Alumno"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnImportarAlumno">
@@ -446,6 +450,7 @@
         <Component class="javax.swing.JButton" name="btnVaciarTablaAlumnos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Vaciar Tabla"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>

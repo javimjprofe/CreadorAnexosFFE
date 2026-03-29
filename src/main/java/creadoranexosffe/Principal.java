@@ -4,6 +4,10 @@
  */
 package creadoranexosffe;
 
+import creadoranexosffe.librerias.Alumno;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author javimjprofe
@@ -11,12 +15,13 @@ package creadoranexosffe;
 public class Principal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
-
+    private ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        
     }
 
     /**
@@ -234,6 +239,7 @@ public class Principal extends javax.swing.JFrame {
         lblApellidosAlumno.setText("Apellidos: ");
 
         btnAnyadirAlumno.setText("Añadir Alumno");
+        btnAnyadirAlumno.addActionListener(this::btnAnyadirAlumnoActionPerformed);
 
         tblAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -254,10 +260,12 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblAlumnos);
 
         btnEliminarAlumno.setText("Eliminar Alumno");
+        btnEliminarAlumno.setEnabled(false);
 
         btnImportarAlumno.setText("Importar");
 
         btnVaciarTablaAlumnos.setText("Vaciar Tabla");
+        btnVaciarTablaAlumnos.setEnabled(false);
 
         javax.swing.GroupLayout pnlAlumnosLayout = new javax.swing.GroupLayout(pnlAlumnos);
         pnlAlumnos.setLayout(pnlAlumnosLayout);
@@ -450,6 +458,12 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_rdbAnexoIActionPerformed
 
+    private void btnAnyadirAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnyadirAlumnoActionPerformed
+        if(!anyadirAlumno(txtNombreAlumno.getText().trim(), txtApellidosAlumno.getText().trim())){
+            //Mensaje error
+        }
+    }//GEN-LAST:event_btnAnyadirAlumnoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -473,6 +487,19 @@ public class Principal extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Principal().setVisible(true));
+    }
+    
+    private boolean anyadirAlumno(String nombre, String apellidos){
+        if(!nombre.isEmpty() && !apellidos.isEmpty()){
+            DefaultTableModel modelo = (DefaultTableModel)tblAlumnos.getModel();
+            Object[] fila = {nombre, apellidos};
+            modelo.addRow(fila);
+            alumnos.add(new Alumno(nombre, apellidos));
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
