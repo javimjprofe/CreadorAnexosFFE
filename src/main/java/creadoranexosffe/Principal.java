@@ -18,14 +18,15 @@ import javax.swing.table.DefaultTableModel;
  * @author javimjprofe
  */
 public class Principal extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
     private List<Alumno> alumnos = new ArrayList<Alumno>();
+
     /**
      * Creates new form Principal
      */
     public Principal() {
-        initComponents();        
+        initComponents();
     }
 
     /**
@@ -453,7 +454,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rdbAnexoIIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAnexoIIActionPerformed
-        if(rdbAnexoII.isSelected()){
+        if (rdbAnexoII.isSelected()) {
             txtCodigoModulo.setEnabled(true);
             txtNombreModulo.setEnabled(true);
             btnAnyadirModulo.setEnabled(true);
@@ -463,7 +464,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_rdbAnexoIIActionPerformed
 
     private void rdbAnexoIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAnexoIActionPerformed
-        if(rdbAnexoI.isSelected()){
+        if (rdbAnexoI.isSelected()) {
             txtCodigoModulo.setEnabled(false);
             txtNombreModulo.setEnabled(false);
             btnAnyadirModulo.setEnabled(false);
@@ -476,11 +477,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_rdbAnexoIActionPerformed
 
     private void btnAnyadirAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnyadirAlumnoActionPerformed
-        if(!anyadirAlumno(txtNombreAlumno.getText().trim(), txtApellidosAlumno.getText().trim())){
+        if (!anyadirAlumno(txtNombreAlumno.getText().trim(), txtApellidosAlumno.getText().trim())) {
             DialogoError dialogoError = new DialogoError(this, true, "El alumno debe tener nombre y apellidos");
             dialogoError.setVisible(true);
-        }
-        else{
+        } else {
             txtNombreAlumno.setText("");
             txtApellidosAlumno.setText("");
             btnVaciarTablaAlumnos.setEnabled(true);
@@ -498,13 +498,13 @@ public class Principal extends javax.swing.JFrame {
     private void btnEliminarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAlumnoActionPerformed
         int filaSeleccionada = tblAlumnos.getSelectedRow();
         DefaultTableModel modelo;
-        if( filaSeleccionada > -1){
+        if (filaSeleccionada > -1) {
             modelo = (DefaultTableModel) tblAlumnos.getModel();
             modelo.removeRow(filaSeleccionada);
             alumnos.remove(filaSeleccionada);
             tblAlumnos.clearSelection();
             btnEliminarAlumno.setEnabled(false);
-            btnVaciarTablaAlumnos.setEnabled(alumnos.size()>0);
+            btnVaciarTablaAlumnos.setEnabled(alumnos.size() > 0);
         } else {
             DialogoError dialogoError = new DialogoError(this, true, "Debes seleccionar un alumno en la tabla para eliminar");
             dialogoError.setVisible(true);
@@ -518,24 +518,29 @@ public class Principal extends javax.swing.JFrame {
     private void btnImportarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarAlumnoActionPerformed
         File fichero;
         List<Alumno> alumnosAAnyadir;
-        
-        DialogoInformacion dialogoInformacion = new DialogoInformacion(this, true);
-        if(dialogoInformacion.mostrarMensajeInformacion()){
-            reiniciarTablaAlumnos();
+        DialogoInformacion dialogoInformacion;
+        JFileChooser fc;
+        int seleccion;
+
+        if (alumnos.size() > 0) {
+            dialogoInformacion = new DialogoInformacion(this, true);
+            if (dialogoInformacion.mostrarMensajeInformacion()) {
+                reiniciarTablaAlumnos();
+            }
         }
-        
-        JFileChooser fc = new JFileChooser();
+
+        fc = new JFileChooser();
         fc.setCurrentDirectory(new File("."));
         fc.setFileFilter(new FileNameExtensionFilter("*.CSV", "csv"));
         fc.setAcceptAllFileFilterUsed(false);
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        int seleccion = fc.showOpenDialog(this);
-        
-        if(seleccion == JFileChooser.APPROVE_OPTION){
+        seleccion = fc.showOpenDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
             fichero = fc.getSelectedFile();
             alumnosAAnyadir = RecopilacionDatos.recopilarAlumnos(fichero);
-            for(Alumno alumno : alumnosAAnyadir){
-                if(!anyadirAlumno(alumno.getNombre(), alumno.getApellidos())){
+            for (Alumno alumno : alumnosAAnyadir) {
+                if (!anyadirAlumno(alumno.getNombre(), alumno.getApellidos())) {
                     DialogoError dialogoError = new DialogoError(this, true, "El alumno debe tener nombre y apellidos");
                     dialogoError.setVisible(true);
                 }
@@ -568,21 +573,20 @@ public class Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Principal().setVisible(true));
     }
-    
-    private boolean anyadirAlumno(String nombre, String apellidos){
-        if(!nombre.isEmpty() && !apellidos.isEmpty()){
-            DefaultTableModel modelo = (DefaultTableModel)tblAlumnos.getModel();
+
+    private boolean anyadirAlumno(String nombre, String apellidos) {
+        if (!nombre.isEmpty() && !apellidos.isEmpty()) {
+            DefaultTableModel modelo = (DefaultTableModel) tblAlumnos.getModel();
             Object[] fila = {nombre, apellidos};
             modelo.addRow(fila);
             alumnos.add(new Alumno(nombre, apellidos));
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    
-    private void reiniciarTablaAlumnos(){
+
+    private void reiniciarTablaAlumnos() {
         DefaultTableModel modelo = new DefaultTableModel();
         String[] cabecera = {"Nombre", "Apellidos"};
         modelo.setColumnIdentifiers(cabecera);
