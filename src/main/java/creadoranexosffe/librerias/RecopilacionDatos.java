@@ -33,33 +33,30 @@ public class RecopilacionDatos {
             scanner.close();
             return alumnos;
         } catch (Exception e) {
-            System.out.println("Error al recopilar alumnos: " + e.toString());
-            return new ArrayList<>();
+            return null;
         }
     }
 
-    public static List<String[]> recopilarDatosModulos() {
+    public static List<Modulo> recopilarModulos(File fichero) {
         Scanner scanner;
         String linea;
-        List<String[]> datos = new ArrayList<>();
-        File file;
+        List<Modulo> modulos = new ArrayList<Modulo>();
 
         try {
-            file = new File("./datos/modulos.csv");
-            scanner = new Scanner(file);
+            scanner = new Scanner(fichero);
 
             while (scanner.hasNext()) {
                 linea = scanner.nextLine();
                 if (linea.trim().isEmpty())
                     break;
-                datos.add(linea.split(";"));
+                String[] lineaDividida = linea.split(";");
                 //Codigo;Nombre
+                modulos.add(new Modulo(lineaDividida[0], lineaDividida[1]));                
             }
             scanner.close();
-            return datos;
+            return modulos;
         } catch (Exception e) {
-            System.out.println("Error al recopilar datos del módulo: " + e.toString());
-            return new ArrayList<>();
+            return null;
         }
     }
 

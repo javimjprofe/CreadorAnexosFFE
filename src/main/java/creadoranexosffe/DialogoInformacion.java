@@ -15,9 +15,10 @@ public class DialogoInformacion extends javax.swing.JDialog {
     /**
      * Creates new form DialogoInformacion
      */
-    public DialogoInformacion(java.awt.Frame parent, boolean modal) {
+    public DialogoInformacion(java.awt.Frame parent, boolean modal, String texto) {
         super(parent, modal);
         initComponents();
+        lblMensajeInformacion.setText(texto);
     }
 
     public boolean mostrarMensajeInformacion(){
@@ -44,8 +45,6 @@ public class DialogoInformacion extends javax.swing.JDialog {
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 
-        lblMensajeInformacion.setText("¿Deseas descartar los alumnos existentes en la tabla?");
-
         btnMensajeInformacionSi.setText("Sí");
         btnMensajeInformacionSi.addActionListener(this::btnMensajeInformacionSiActionPerformed);
 
@@ -57,7 +56,7 @@ public class DialogoInformacion extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(362, Short.MAX_VALUE)
                 .addComponent(lblMensajeInformacion)
                 .addGap(38, 38, 38))
             .addGroup(layout.createSequentialGroup()
@@ -76,7 +75,7 @@ public class DialogoInformacion extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMensajeInformacionSi)
                     .addComponent(btnMensajeInformacionNo))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();

@@ -561,6 +561,9 @@
             <Property name="text" type="java.lang.String" value="A&#xf1;adir M&#xf3;dulo"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnyadirModuloActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <AuxValues>
@@ -579,6 +582,10 @@
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblModulosMouseReleased"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblModulosKeyReleased"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -587,18 +594,27 @@
             <Property name="text" type="java.lang.String" value="Eliminar M&#xf3;dulo"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarModuloActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnImportarModulos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Importar"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImportarModulosActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnVaciarTablaModulos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Vaciar Tabla"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVaciarTablaModulosActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

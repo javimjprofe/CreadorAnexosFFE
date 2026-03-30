@@ -5,6 +5,7 @@
 package creadoranexosffe;
 
 import creadoranexosffe.librerias.Alumno;
+import creadoranexosffe.librerias.Modulo;
 import creadoranexosffe.librerias.RecopilacionDatos;
 import java.io.File;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class Principal extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
     private List<Alumno> alumnos = new ArrayList<Alumno>();
+    private List<Modulo> modulos = new ArrayList<Modulo>();
 
     /**
      * Creates new form Principal
@@ -346,6 +348,7 @@ public class Principal extends javax.swing.JFrame {
 
         btnAnyadirModulo.setText("Añadir Módulo");
         btnAnyadirModulo.setEnabled(false);
+        btnAnyadirModulo.addActionListener(this::btnAnyadirModuloActionPerformed);
 
         tblModulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -364,16 +367,29 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         tblModulos.setEnabled(false);
+        tblModulos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tblModulosMouseReleased(evt);
+            }
+        });
+        tblModulos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblModulosKeyReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblModulos);
 
         btnEliminarModulo.setText("Eliminar Módulo");
         btnEliminarModulo.setEnabled(false);
+        btnEliminarModulo.addActionListener(this::btnEliminarModuloActionPerformed);
 
         btnImportarModulos.setText("Importar");
         btnImportarModulos.setEnabled(false);
+        btnImportarModulos.addActionListener(this::btnImportarModulosActionPerformed);
 
         btnVaciarTablaModulos.setText("Vaciar Tabla");
         btnVaciarTablaModulos.setEnabled(false);
+        btnVaciarTablaModulos.addActionListener(this::btnVaciarTablaModulosActionPerformed);
 
         javax.swing.GroupLayout pnlModulosLayout = new javax.swing.GroupLayout(pnlModulos);
         pnlModulos.setLayout(pnlModulosLayout);
@@ -460,6 +476,9 @@ public class Principal extends javax.swing.JFrame {
             btnAnyadirModulo.setEnabled(true);
             btnImportarModulos.setEnabled(true);
             tblModulos.setEnabled(true);
+            tblModulos.setRowSelectionAllowed(true);
+            tblModulos.setColumnSelectionAllowed(true);
+            tblModulos.setCellSelectionEnabled(true);
         }
     }//GEN-LAST:event_rdbAnexoIIActionPerformed
 
@@ -471,8 +490,11 @@ public class Principal extends javax.swing.JFrame {
             btnImportarModulos.setEnabled(false);
             btnEliminarModulo.setEnabled(false);
             btnVaciarTablaModulos.setEnabled(false);
-            tblModulos.setEnabled(false);
             tblModulos.clearSelection();
+            tblModulos.setEnabled(false);
+            tblModulos.setRowSelectionAllowed(false);
+            tblModulos.setColumnSelectionAllowed(false);
+            tblModulos.setCellSelectionEnabled(false);
         }
     }//GEN-LAST:event_rdbAnexoIActionPerformed
 
@@ -523,7 +545,7 @@ public class Principal extends javax.swing.JFrame {
         int seleccion;
 
         if (alumnos.size() > 0) {
-            dialogoInformacion = new DialogoInformacion(this, true);
+            dialogoInformacion = new DialogoInformacion(this, true, "¿Deseas descartar los alumnos existentes en la tabla?");
             if (dialogoInformacion.mostrarMensajeInformacion()) {
                 reiniciarTablaAlumnos();
             }
@@ -539,6 +561,11 @@ public class Principal extends javax.swing.JFrame {
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             fichero = fc.getSelectedFile();
             alumnosAAnyadir = RecopilacionDatos.recopilarAlumnos(fichero);
+            if (alumnosAAnyadir == null) {
+                DialogoError dialogoError = new DialogoError(this, true, "Ha ocurrido un error durante la importación de alumnos");
+                dialogoError.setVisible(true);
+                return;
+            }
             for (Alumno alumno : alumnosAAnyadir) {
                 if (!anyadirAlumno(alumno.getNombre(), alumno.getApellidos())) {
                     DialogoError dialogoError = new DialogoError(this, true, "El alumno debe tener nombre y apellidos");
@@ -548,6 +575,86 @@ public class Principal extends javax.swing.JFrame {
             btnVaciarTablaAlumnos.setEnabled(alumnos.size() > 0);
         }
     }//GEN-LAST:event_btnImportarAlumnoActionPerformed
+
+    private void btnAnyadirModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnyadirModuloActionPerformed
+        if (!anyadirModulo(txtCodigoModulo.getText().trim(), txtNombreModulo.getText().trim())) {
+            DialogoError dialogoError = new DialogoError(this, true, "El módulo debe tener código y nombre");
+            dialogoError.setVisible(true);
+        } else {
+            txtCodigoModulo.setText("");
+            txtNombreModulo.setText("");
+            btnVaciarTablaModulos.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnAnyadirModuloActionPerformed
+
+    private void btnEliminarModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarModuloActionPerformed
+        int filaSeleccionada = tblModulos.getSelectedRow();
+        DefaultTableModel modelo;
+        if (filaSeleccionada > -1) {
+            modelo = (DefaultTableModel) tblModulos.getModel();
+            modelo.removeRow(filaSeleccionada);
+            modulos.remove(filaSeleccionada);
+            tblModulos.clearSelection();
+            btnEliminarModulo.setEnabled(false);
+            btnVaciarTablaModulos.setEnabled(modulos.size() > 0);
+        } else {
+            DialogoError dialogoError = new DialogoError(this, true, "Debes seleccionar un modulo en la tabla para eliminar");
+            dialogoError.setVisible(true);
+        }
+    }//GEN-LAST:event_btnEliminarModuloActionPerformed
+
+    private void btnVaciarTablaModulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVaciarTablaModulosActionPerformed
+        reiniciarTablaModulos();
+    }//GEN-LAST:event_btnVaciarTablaModulosActionPerformed
+
+    private void btnImportarModulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarModulosActionPerformed
+        File fichero;
+        List<Modulo> modulosAAnyadir;
+        DialogoInformacion dialogoInformacion;
+        JFileChooser fc;
+        int seleccion;
+
+        if (modulos.size() > 0) {
+            dialogoInformacion = new DialogoInformacion(this, true, "¿Deseas descartar los módulos existentes en la tabla?");
+            if (dialogoInformacion.mostrarMensajeInformacion()) {
+                reiniciarTablaModulos();
+            }
+        }
+
+        fc = new JFileChooser();
+        fc.setCurrentDirectory(new File("."));
+        fc.setFileFilter(new FileNameExtensionFilter("*.CSV", "csv"));
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        seleccion = fc.showOpenDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            fichero = fc.getSelectedFile();
+            modulosAAnyadir = RecopilacionDatos.recopilarModulos(fichero);
+            if (modulosAAnyadir == null) {
+                DialogoError dialogoError = new DialogoError(this, true, "Ha ocurrido un error durante la importación de módulos");
+                dialogoError.setVisible(true);
+                return;
+            }
+            for (Modulo modulo : modulosAAnyadir) {
+                if (!anyadirModulo(modulo.getCodigo(), modulo.getNombre())) {
+                    DialogoError dialogoError = new DialogoError(this, true, "El modulo debe tener nombre y apellidos");
+                    dialogoError.setVisible(true);
+                }
+            }
+            btnVaciarTablaModulos.setEnabled(modulos.size() > 0);
+        }
+    }//GEN-LAST:event_btnImportarModulosActionPerformed
+
+    private void tblModulosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblModulosMouseReleased
+        if (tblModulos.isEnabled())
+            btnEliminarModulo.setEnabled(true);
+    }//GEN-LAST:event_tblModulosMouseReleased
+
+    private void tblModulosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblModulosKeyReleased
+        if (tblModulos.isEnabled())
+            btnEliminarModulo.setEnabled(true);
+    }//GEN-LAST:event_tblModulosKeyReleased
 
     /**
      * @param args the command line arguments
@@ -586,6 +693,18 @@ public class Principal extends javax.swing.JFrame {
         }
     }
 
+    private boolean anyadirModulo(String codigo, String nombre) {
+        if (!codigo.isEmpty() && !nombre.isEmpty()) {
+            DefaultTableModel modelo = (DefaultTableModel) tblModulos.getModel();
+            Object[] fila = {codigo, nombre};
+            modelo.addRow(fila);
+            modulos.add(new Modulo(codigo, nombre));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private void reiniciarTablaAlumnos() {
         DefaultTableModel modelo = new DefaultTableModel();
         String[] cabecera = {"Nombre", "Apellidos"};
@@ -595,6 +714,17 @@ public class Principal extends javax.swing.JFrame {
         btnEliminarAlumno.setEnabled(false);
         btnVaciarTablaAlumnos.setEnabled(false);
         alumnos.clear();
+    }
+
+    private void reiniciarTablaModulos() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        String[] cabecera = {"Código", "Nombre"};
+        modelo.setColumnIdentifiers(cabecera);
+        tblModulos.setModel(modelo);
+        tblModulos.setDefaultEditor(Object.class, null);
+        btnEliminarModulo.setEnabled(false);
+        btnVaciarTablaModulos.setEnabled(false);
+        modulos.clear();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

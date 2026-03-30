@@ -33,7 +33,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="42" max="32767" attributes="0"/>
+              <EmptySpace pref="362" max="32767" attributes="0"/>
               <Component id="lblMensajeInformacion" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
           </Group>
@@ -56,16 +56,13 @@
                   <Component id="btnMensajeInformacionSi" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnMensajeInformacionNo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="44" max="32767" attributes="0"/>
+              <EmptySpace pref="61" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lblMensajeInformacion">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#xbf;Deseas descartar los alumnos existentes en la tabla?"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnMensajeInformacionSi">
       <Properties>
