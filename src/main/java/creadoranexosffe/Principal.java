@@ -10,6 +10,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -260,6 +261,7 @@ public class Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblAlumnos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 tblAlumnosMouseReleased(evt);
@@ -475,7 +477,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnAnyadirAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnyadirAlumnoActionPerformed
         if(!anyadirAlumno(txtNombreAlumno.getText().trim(), txtApellidosAlumno.getText().trim())){
-            //Mensaje error
+            DialogoError dialogoError = new DialogoError(this, true, "El alumno debe tener nombre y apellidos");
+            dialogoError.setVisible(true);
         }
         else{
             txtNombreAlumno.setText("");
@@ -503,24 +506,29 @@ public class Principal extends javax.swing.JFrame {
             btnEliminarAlumno.setEnabled(false);
             btnVaciarTablaAlumnos.setEnabled(alumnos.size()>0);
         } else {
-            //Mensaje error
+            DialogoError dialogoError = new DialogoError(this, true, "Debes seleccionar un alumno en la tabla para eliminar");
+            dialogoError.setVisible(true);
         }
     }//GEN-LAST:event_btnEliminarAlumnoActionPerformed
 
     private void btnVaciarTablaAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVaciarTablaAlumnosActionPerformed
-        DefaultTableModel modelo = new DefaultTableModel();
-        String[] cabecera = {"Nombre", "Apellidos"};
-        modelo.setColumnIdentifiers(cabecera);
-        tblAlumnos.setModel(modelo);
-        btnEliminarAlumno.setEnabled(false);
-        btnVaciarTablaAlumnos.setEnabled(false);
-        alumnos.clear();
+        reiniciarTablaAlumnos();
     }//GEN-LAST:event_btnVaciarTablaAlumnosActionPerformed
 
     private void btnImportarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarAlumnoActionPerformed
         File fichero;
         List<Alumno> alumnosAAnyadir;
+        
+        DialogoInformacion dialogoInformacion = new DialogoInformacion(this, true);
+        if(dialogoInformacion.mostrarMensajeInformacion()){
+            reiniciarTablaAlumnos();
+        }
+        
         JFileChooser fc = new JFileChooser();
+        fc.setCurrentDirectory(new File("."));
+        fc.setFileFilter(new FileNameExtensionFilter("*.CSV", "csv"));
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int seleccion = fc.showOpenDialog(this);
         
         if(seleccion == JFileChooser.APPROVE_OPTION){
@@ -528,7 +536,8 @@ public class Principal extends javax.swing.JFrame {
             alumnosAAnyadir = RecopilacionDatos.recopilarAlumnos(fichero);
             for(Alumno alumno : alumnosAAnyadir){
                 if(!anyadirAlumno(alumno.getNombre(), alumno.getApellidos())){
-                    //Mensaje error
+                    DialogoError dialogoError = new DialogoError(this, true, "El alumno debe tener nombre y apellidos");
+                    dialogoError.setVisible(true);
                 }
             }
             btnVaciarTablaAlumnos.setEnabled(alumnos.size() > 0);
@@ -571,6 +580,17 @@ public class Principal extends javax.swing.JFrame {
         else{
             return false;
         }
+    }
+    
+    private void reiniciarTablaAlumnos(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        String[] cabecera = {"Nombre", "Apellidos"};
+        modelo.setColumnIdentifiers(cabecera);
+        tblAlumnos.setModel(modelo);
+        tblAlumnos.setDefaultEditor(Object.class, null);
+        btnEliminarAlumno.setEnabled(false);
+        btnVaciarTablaAlumnos.setEnabled(false);
+        alumnos.clear();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
