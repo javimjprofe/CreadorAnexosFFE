@@ -4,9 +4,7 @@
  */
 package creadoranexosffe.librerias;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -32,25 +30,13 @@ public class FicherosDirectorios {
         return ruta;
     }
 
-    public static String generarNombreFicheroAnexo1(String nombreAlumno, String ciclo, String modulo) {
-        return nombreAlumno + "_" + ciclo + "_" + modulo + "_ANEXOI.pdf";
+    public static String generarNombreFicheroAnexo1(Alumno alumno, String ciclo, String modulo) {
+        return alumno.getNombre() + "_" + alumno.getApellidos().replace(" ","_") 
+                + "_" + ciclo + "_" + modulo + "_ANEXOI.pdf";
     }
 
-    public static String generarNombreFicheroAnexo2(String nombreAlumno, String ciclo) {
-        return nombreAlumno + "_" + ciclo + "_ANEXOII.pdf";
-    }
-
-    public static File obtenerRutaAplicacion() {
-        try {
-            return new File(
-                    FicherosDirectorios.class
-                            .getProtectionDomain()
-                            .getCodeSource()
-                            .getLocation()
-                            .toURI()
-            ).getParentFile();
-        } catch (URISyntaxException e) {
-            throw new RuntimeException("No se pudo determinar la ruta del ejecutable");
-        }
+    public static String generarNombreFicheroAnexo2(Alumno alumno, String ciclo) {
+        return alumno.getNombre() + "_" + alumno.getApellidos().replace(" ","_")
+                + "_" + ciclo + "_ANEXOII.pdf";
     }
 }

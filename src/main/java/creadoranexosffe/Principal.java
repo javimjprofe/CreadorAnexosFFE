@@ -5,10 +5,16 @@
 package creadoranexosffe;
 
 import creadoranexosffe.librerias.Alumno;
+import creadoranexosffe.librerias.DatosComunes;
+import creadoranexosffe.librerias.EscrituraDatos;
+import creadoranexosffe.librerias.FicherosDirectorios;
 import creadoranexosffe.librerias.Modulo;
 import creadoranexosffe.librerias.RecopilacionDatos;
 import java.io.File;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -54,9 +60,9 @@ public class Principal extends javax.swing.JFrame {
         txtGrupo = new javax.swing.JTextField();
         lblAnyoEscolar = new javax.swing.JLabel();
         spnCurso = new javax.swing.JSpinner();
-        spnIniAnyoEscolar = new javax.swing.JSpinner();
+        spnAnyoEscolarIni = new javax.swing.JSpinner();
         lblBarraAnyoEscolar = new javax.swing.JLabel();
-        spnFinAnioEscolar = new javax.swing.JSpinner();
+        spnAnyoEscolarFin = new javax.swing.JSpinner();
         lblCurso = new javax.swing.JLabel();
         lblPobalcion = new javax.swing.JLabel();
         txtPoblacion = new javax.swing.JTextField();
@@ -103,6 +109,7 @@ public class Principal extends javax.swing.JFrame {
         rdbAnexoII.addActionListener(this::rdbAnexoIIActionPerformed);
 
         btnGenerarAnexos.setText("Generar Anexos");
+        btnGenerarAnexos.addActionListener(this::btnGenerarAnexosActionPerformed);
 
         javax.swing.GroupLayout pnlTipoAnexoLayout = new javax.swing.GroupLayout(pnlTipoAnexo);
         pnlTipoAnexo.setLayout(pnlTipoAnexoLayout);
@@ -141,11 +148,11 @@ public class Principal extends javax.swing.JFrame {
         spnCurso.setModel(new javax.swing.SpinnerNumberModel(1, 1, 2, 1));
         spnCurso.setName("spnCurso"); // NOI18N
 
-        spnIniAnyoEscolar.setModel(new javax.swing.SpinnerNumberModel(2025, 2025, 2100, 1));
+        spnAnyoEscolarIni.setModel(new javax.swing.SpinnerNumberModel(2025, 2025, 2100, 1));
 
         lblBarraAnyoEscolar.setText("/");
 
-        spnFinAnioEscolar.setModel(new javax.swing.SpinnerNumberModel(2026, 2026, 2100, 1));
+        spnAnyoEscolarFin.setModel(new javax.swing.SpinnerNumberModel(2026, 2026, 2100, 1));
 
         lblCurso.setText("Curso: ");
 
@@ -189,25 +196,25 @@ public class Principal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(lblAnyoEscolar)
                                 .addGap(18, 18, 18)
-                                .addComponent(spnIniAnyoEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(spnAnyoEscolarIni, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblBarraAnyoEscolar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(spnFinAnioEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(spnAnyoEscolarFin, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlDatosComunesLayout.createSequentialGroup()
                         .addComponent(lblPobalcion)
                         .addGap(18, 18, 18)
                         .addComponent(txtPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(lblFechaSesion)
                         .addGap(18, 18, 18)
-                        .addComponent(spnFechaSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(spnFechaSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lblFechaFirma)
                         .addGap(18, 18, 18)
-                        .addComponent(spnFechaFirma, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(92, 92, 92))))
+                        .addComponent(spnFechaFirma, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74))))
         );
         pnlDatosComunesLayout.setVerticalGroup(
             pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,9 +226,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(lblNombreCiclo)
                     .addComponent(txtNombreCiclo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAnyoEscolar)
-                    .addComponent(spnIniAnyoEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnAnyoEscolarIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblBarraAnyoEscolar)
-                    .addComponent(spnFinAnioEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnAnyoEscolarFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlDatosComunesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCurso)
@@ -340,14 +347,9 @@ public class Principal extends javax.swing.JFrame {
 
         lblNombreModulo.setText("Nombre: ");
 
-        txtCodigoModulo.setEnabled(false);
-
         lblCodigoModulo.setText("Código: ");
 
-        txtNombreModulo.setEnabled(false);
-
         btnAnyadirModulo.setText("Añadir Módulo");
-        btnAnyadirModulo.setEnabled(false);
         btnAnyadirModulo.addActionListener(this::btnAnyadirModuloActionPerformed);
 
         tblModulos.setModel(new javax.swing.table.DefaultTableModel(
@@ -366,7 +368,6 @@ public class Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblModulos.setEnabled(false);
         tblModulos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 tblModulosMouseReleased(evt);
@@ -384,7 +385,6 @@ public class Principal extends javax.swing.JFrame {
         btnEliminarModulo.addActionListener(this::btnEliminarModuloActionPerformed);
 
         btnImportarModulos.setText("Importar");
-        btnImportarModulos.setEnabled(false);
         btnImportarModulos.addActionListener(this::btnImportarModulosActionPerformed);
 
         btnVaciarTablaModulos.setText("Vaciar Tabla");
@@ -471,30 +471,32 @@ public class Principal extends javax.swing.JFrame {
 
     private void rdbAnexoIIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAnexoIIActionPerformed
         if (rdbAnexoII.isSelected()) {
-            txtCodigoModulo.setEnabled(true);
-            txtNombreModulo.setEnabled(true);
-            btnAnyadirModulo.setEnabled(true);
-            btnImportarModulos.setEnabled(true);
-            tblModulos.setEnabled(true);
-            tblModulos.setRowSelectionAllowed(true);
-            tblModulos.setColumnSelectionAllowed(true);
-            tblModulos.setCellSelectionEnabled(true);
-        }
-    }//GEN-LAST:event_rdbAnexoIIActionPerformed
-
-    private void rdbAnexoIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAnexoIActionPerformed
-        if (rdbAnexoI.isSelected()) {
             txtCodigoModulo.setEnabled(false);
             txtNombreModulo.setEnabled(false);
             btnAnyadirModulo.setEnabled(false);
             btnImportarModulos.setEnabled(false);
             btnEliminarModulo.setEnabled(false);
             btnVaciarTablaModulos.setEnabled(false);
-            tblModulos.clearSelection();
             tblModulos.setEnabled(false);
             tblModulos.setRowSelectionAllowed(false);
             tblModulos.setColumnSelectionAllowed(false);
             tblModulos.setCellSelectionEnabled(false);
+        }
+    }//GEN-LAST:event_rdbAnexoIIActionPerformed
+
+    private void rdbAnexoIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAnexoIActionPerformed
+        if (rdbAnexoI.isSelected()) {
+            txtCodigoModulo.setEnabled(true);
+            txtNombreModulo.setEnabled(true);
+            btnAnyadirModulo.setEnabled(true);
+            btnImportarModulos.setEnabled(true);
+            if(modulos.size()>0)
+                btnVaciarTablaModulos.setEnabled(true);
+            tblModulos.clearSelection();
+            tblModulos.setEnabled(true);
+            tblModulos.setRowSelectionAllowed(true);
+            tblModulos.setColumnSelectionAllowed(true);
+            tblModulos.setCellSelectionEnabled(true);
         }
     }//GEN-LAST:event_rdbAnexoIActionPerformed
 
@@ -656,6 +658,54 @@ public class Principal extends javax.swing.JFrame {
             btnEliminarModulo.setEnabled(true);
     }//GEN-LAST:event_tblModulosKeyReleased
 
+    private void btnGenerarAnexosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarAnexosActionPerformed
+        String codigoCiclo = txtCodigoCiclo.getText().trim();
+        String nombreCiclo = txtNombreCiclo.getText().trim();
+        String grupo = txtGrupo.getText().trim();
+        String poblacion = txtPoblacion.getText().trim();
+        DialogoError dialogoError;
+        DialogoFin dialogoFin;
+        JFileChooser fc;
+        DatosComunes datosComunes;
+        int seleccion;
+        File directorio;
+        EscrituraDatos escrituraDatos;
+        Date fechaSesion;
+        Date fechaFirma;
+
+        try {
+            if (codigoCiclo.isEmpty() || nombreCiclo.isEmpty() || grupo.isEmpty() || poblacion.isEmpty()) {
+                dialogoError = new DialogoError(this, true, "Todos los datos comunes deben estar rellenos");
+            } else {
+                fechaSesion = (Date) spnFechaSesion.getValue();
+                fechaFirma = (Date) spnFechaFirma.getValue();
+                datosComunes = new DatosComunes(codigoCiclo, nombreCiclo, (int) spnCurso.getValue(),
+                        (int) spnAnyoEscolarIni.getValue(), (int) spnAnyoEscolarFin.getValue(),
+                        grupo, poblacion, fechaSesion.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                        fechaFirma.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+                fc = new JFileChooser();
+                fc.setCurrentDirectory(new File("."));
+                fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                seleccion = fc.showSaveDialog(this);
+                if (seleccion == fc.APPROVE_OPTION) {
+                    directorio = fc.getSelectedFile();
+                    escrituraDatos = new EscrituraDatos();
+                    for (Modulo modulo : modulos) {
+                        FicherosDirectorios.crearCarpeta(directorio.getAbsoluteFile() + "/" 
+                            + datosComunes.getCodigoCiclo()+ "/" + modulo.getCodigo() + "/");
+                        for (Alumno alumno : alumnos) {
+                            escrituraDatos.rellenarAnexoI(directorio, alumno, modulo, datosComunes);
+                        }
+                    }
+                }
+                dialogoFin = new DialogoFin(this, true);
+                dialogoFin.setVisible(true);
+            }
+        } catch (Exception e) {
+            dialogoError = new DialogoError(this, true, "Ocurrió un error durante la generación de los anexos");
+        }
+    }//GEN-LAST:event_btnGenerarAnexosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -726,6 +776,7 @@ public class Principal extends javax.swing.JFrame {
         btnVaciarTablaModulos.setEnabled(false);
         modulos.clear();
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnyadirAlumno;
@@ -759,11 +810,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlTipoAnexo;
     private javax.swing.JRadioButton rdbAnexoI;
     private javax.swing.JRadioButton rdbAnexoII;
+    private javax.swing.JSpinner spnAnyoEscolarFin;
+    private javax.swing.JSpinner spnAnyoEscolarIni;
     private javax.swing.JSpinner spnCurso;
     private javax.swing.JSpinner spnFechaFirma;
     private javax.swing.JSpinner spnFechaSesion;
-    private javax.swing.JSpinner spnFinAnioEscolar;
-    private javax.swing.JSpinner spnIniAnyoEscolar;
     private javax.swing.JTable tblAlumnos;
     private javax.swing.JTable tblModulos;
     private javax.swing.JTextField txtApellidosAlumno;

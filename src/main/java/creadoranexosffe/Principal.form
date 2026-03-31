@@ -127,6 +127,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Generar Anexos"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGenerarAnexosActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -167,11 +170,11 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="lblAnyoEscolar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="spnIniAnyoEscolar" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="spnAnyoEscolarIni" min="-2" pref="75" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="lblBarraAnyoEscolar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="spnFinAnioEscolar" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="spnAnyoEscolarFin" min="-2" pref="75" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -180,15 +183,15 @@
                           <Component id="lblPobalcion" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txtPoblacion" min="-2" pref="178" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
                           <Component id="lblFechaSesion" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="spnFechaSesion" min="-2" pref="96" max="-2" attributes="0"/>
+                          <Component id="spnFechaSesion" min="-2" pref="105" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="lblFechaFirma" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="spnFechaFirma" min="-2" pref="96" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                          <Component id="spnFechaFirma" min="-2" pref="105" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -204,9 +207,9 @@
                       <Component id="lblNombreCiclo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtNombreCiclo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblAnyoEscolar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnIniAnyoEscolar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnAnyoEscolarIni" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblBarraAnyoEscolar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnFinAnioEscolar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnAnyoEscolarFin" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -264,7 +267,7 @@
             <Property name="name" type="java.lang.String" value="spnCurso" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnIniAnyoEscolar">
+        <Component class="javax.swing.JSpinner" name="spnAnyoEscolarIni">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="2025" maximum="2100" minimum="2025" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -276,7 +279,7 @@
             <Property name="text" type="java.lang.String" value="/"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnFinAnioEscolar">
+        <Component class="javax.swing.JSpinner" name="spnAnyoEscolarFin">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="2026" maximum="2100" minimum="2026" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -542,9 +545,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCodigoModulo">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCodigoModulo">
           <Properties>
@@ -552,14 +552,10 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNombreModulo">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnAnyadirModulo">
           <Properties>
             <Property name="text" type="java.lang.String" value="A&#xf1;adir M&#xf3;dulo"/>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnyadirModuloActionPerformed"/>
@@ -580,7 +576,6 @@
                     <Column editable="false" title="Nombre" type="java.lang.Object"/>
                   </Table>
                 </Property>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblModulosMouseReleased"/>
@@ -601,7 +596,6 @@
         <Component class="javax.swing.JButton" name="btnImportarModulos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Importar"/>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImportarModulosActionPerformed"/>
