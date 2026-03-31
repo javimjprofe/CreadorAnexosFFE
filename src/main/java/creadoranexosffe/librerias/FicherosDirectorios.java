@@ -30,13 +30,13 @@ public class FicherosDirectorios {
         return ruta;
     }
 
-    public static String generarNombreFicheroAnexo1(Alumno alumno, String ciclo, String modulo) {
-        return alumno.getNombre() + "_" + alumno.getApellidos().replace(" ","_") 
-                + "_" + ciclo + "_" + modulo + "_ANEXOI.pdf";
+    public static String generarNombreFicheroAnexoI(Alumno alumno, DatosComunes datosComunes, Modulo modulo) {
+        return alumno.getApellidos().replace(" ","_") + "_" + alumno.getNombre()
+                + "_" + datosComunes.getCodigoCiclo() + "_" + modulo.getCodigo() + "_ANEXOI.pdf";
     }
 
-    public static String generarNombreFicheroAnexo2(Alumno alumno, String ciclo) {
-        return alumno.getNombre() + "_" + alumno.getApellidos().replace(" ","_")
-                + "_" + ciclo + "_ANEXOII.pdf";
+    public static String generarNombreFicheroAnexoII(Alumno alumno, DatosComunes datosComunes) {
+        return alumno.getApellidos().replace(" ","_") + "_" + alumno.getNombre()
+                + "_" + datosComunes.getCodigoCiclo() + "_ANEXOII.pdf";
     }
 }
