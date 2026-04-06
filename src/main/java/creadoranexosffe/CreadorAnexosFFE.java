@@ -78,7 +78,7 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAlumnos = new javax.swing.JTable();
         btnEliminarAlumno = new javax.swing.JButton();
-        btnImportarAlumno = new javax.swing.JButton();
+        btnImportarAlumnos = new javax.swing.JButton();
         btnVaciarTablaAlumnos = new javax.swing.JButton();
         pnlModulos = new javax.swing.JPanel();
         lblNombreModulo = new javax.swing.JLabel();
@@ -287,8 +287,8 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
         btnEliminarAlumno.setEnabled(false);
         btnEliminarAlumno.addActionListener(this::btnEliminarAlumnoActionPerformed);
 
-        btnImportarAlumno.setText("Importar");
-        btnImportarAlumno.addActionListener(this::btnImportarAlumnoActionPerformed);
+        btnImportarAlumnos.setText("Importar");
+        btnImportarAlumnos.addActionListener(this::btnImportarAlumnosActionPerformed);
 
         btnVaciarTablaAlumnos.setText("Vaciar Tabla");
         btnVaciarTablaAlumnos.setEnabled(false);
@@ -316,7 +316,7 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
                 .addGroup(pnlAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEliminarAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVaciarTablaAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnImportarAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnImportarAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAnyadirAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
@@ -333,7 +333,7 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(pnlAlumnosLayout.createSequentialGroup()
-                        .addComponent(btnImportarAlumno)
+                        .addComponent(btnImportarAlumnos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEliminarAlumno)
                         .addGap(18, 18, 18)
@@ -470,33 +470,13 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
 
     private void rdbAnexoIIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAnexoIIActionPerformed
         if (rdbAnexoII.isSelected()) {
-            txtCodigoModulo.setEnabled(false);
-            txtNombreModulo.setEnabled(false);
-            btnAnyadirModulo.setEnabled(false);
-            btnImportarModulos.setEnabled(false);
-            btnEliminarModulo.setEnabled(false);
-            btnVaciarTablaModulos.setEnabled(false);
-            tblModulos.setEnabled(false);
-            tblModulos.setRowSelectionAllowed(false);
-            tblModulos.setColumnSelectionAllowed(false);
-            tblModulos.setCellSelectionEnabled(false);
+            habilitarZonaModulos(false);
         }
     }//GEN-LAST:event_rdbAnexoIIActionPerformed
 
     private void rdbAnexoIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAnexoIActionPerformed
         if (rdbAnexoI.isSelected()) {
-            txtCodigoModulo.setEnabled(true);
-            txtNombreModulo.setEnabled(true);
-            btnAnyadirModulo.setEnabled(true);
-            btnImportarModulos.setEnabled(true);
-            if (modulos.size() > 0) {
-                btnVaciarTablaModulos.setEnabled(true);
-            }
-            tblModulos.clearSelection();
-            tblModulos.setEnabled(true);
-            tblModulos.setCellSelectionEnabled(true);
-            tblModulos.setColumnSelectionAllowed(true);
-            tblModulos.setRowSelectionAllowed(true);
+            habilitarZonaModulos(true);
         }
     }//GEN-LAST:event_rdbAnexoIActionPerformed
 
@@ -539,7 +519,7 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
         reiniciarTablaAlumnos();
     }//GEN-LAST:event_btnVaciarTablaAlumnosActionPerformed
 
-    private void btnImportarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarAlumnoActionPerformed
+    private void btnImportarAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarAlumnosActionPerformed
         File fichero;
         List<Alumno> alumnosAAnyadir;
         DialogoInformacion dialogoInformacion;
@@ -576,7 +556,7 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
             }
             btnVaciarTablaAlumnos.setEnabled(alumnos.size() > 0);
         }
-    }//GEN-LAST:event_btnImportarAlumnoActionPerformed
+    }//GEN-LAST:event_btnImportarAlumnosActionPerformed
 
     private void btnAnyadirModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnyadirModuloActionPerformed
         if (!anyadirModulo(txtCodigoModulo.getText().trim(), txtNombreModulo.getText().trim())) {
@@ -659,6 +639,7 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
     }//GEN-LAST:event_tblModulosKeyReleased
 
     private void btnGenerarAnexosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarAnexosActionPerformed
+        habilitarPantallaPrincipal(false);
         String codigoCiclo = txtCodigoCiclo.getText().trim();
         String nombreCiclo = txtNombreCiclo.getText().trim();
         String grupo = txtGrupo.getText().trim();
@@ -676,6 +657,7 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
         try {
             if (codigoCiclo.isEmpty() || nombreCiclo.isEmpty() || grupo.isEmpty() || poblacion.isEmpty()) {
                 dialogoError = new DialogoError(this, true, "Todos los datos comunes deben estar rellenos");
+                dialogoError.setVisible(true);
             } else {
                 fechaSesion = (Date) spnFechaSesion.getValue();
                 fechaFirma = (Date) spnFechaFirma.getValue();
@@ -689,15 +671,14 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
                 seleccion = fc.showSaveDialog(this);
                 if (seleccion == fc.APPROVE_OPTION) {
                     directorio = fc.getSelectedFile();
-                    if(rdbAnexoI.isSelected()){
-                        if(!generarAnexosI(datosComunes, directorio)){
+                    if (rdbAnexoI.isSelected()) {
+                        if (!generarAnexosI(datosComunes, directorio)) {
                             dialogoError = new DialogoError(this, true, "Ocurrió un error durante la generación de los anexos");
                             dialogoError.setVisible(true);
                             return;
                         }
-                    }
-                    else{
-                        if(!generarAnexosII(datosComunes, directorio)){
+                    } else {
+                        if (!generarAnexosII(datosComunes, directorio)) {
                             dialogoError = new DialogoError(this, true, "Ocurrió un error durante la generación de los anexos");
                             dialogoError.setVisible(true);
                             return;
@@ -710,6 +691,8 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
         } catch (Exception e) {
             dialogoError = new DialogoError(this, true, "Ocurrió un error durante la generación de los anexos");
             dialogoError.setVisible(true);
+        } finally {
+            habilitarPantallaPrincipal(true);
         }
     }//GEN-LAST:event_btnGenerarAnexosActionPerformed
 
@@ -810,6 +793,71 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
         return true;
     }
 
+    private void habilitarPantallaPrincipal(boolean habilitar) {
+        habilitarZonaAnexos(habilitar);
+        habilitarZonaDatosComunes(habilitar);
+        habilitarZonaAlumnos(habilitar);
+        habilitarZonaModulos(habilitar);
+    }
+
+    private void habilitarZonaAnexos(boolean habilitar) {
+        rdbAnexoI.setEnabled(habilitar);
+        rdbAnexoII.setEnabled(habilitar);
+        btnGenerarAnexos.setEnabled(habilitar);
+    }
+
+    private void habilitarZonaDatosComunes(boolean habilitar) {
+        txtCodigoCiclo.setEnabled(habilitar);
+        txtNombreCiclo.setEnabled(habilitar);
+        spnAnyoEscolarIni.setEnabled(habilitar);
+        spnAnyoEscolarFin.setEnabled(habilitar);
+        spnCurso.setEnabled(habilitar);
+        txtGrupo.setEnabled(habilitar);
+        txtPoblacion.setEnabled(habilitar);
+        spnFechaSesion.setEnabled(habilitar);
+        spnFechaFirma.setEnabled(habilitar);
+    }
+
+    private void habilitarZonaAlumnos(boolean habilitar) {
+        txtNombreAlumno.setEnabled(habilitar);
+        txtApellidosAlumno.setEnabled(habilitar);
+        btnAnyadirAlumno.setEnabled(habilitar);
+        btnImportarAlumnos.setEnabled(habilitar);
+        if (!habilitar)
+            btnEliminarAlumno.setEnabled(habilitar);
+        if (alumnos.size() > 0 && habilitar) {
+            btnVaciarTablaAlumnos.setEnabled(habilitar);
+        }
+        else{
+            btnVaciarTablaAlumnos.setEnabled(false);
+        }
+        tblAlumnos.clearSelection();
+        tblAlumnos.setEnabled(habilitar);
+        tblAlumnos.setRowSelectionAllowed(habilitar);
+        tblAlumnos.setColumnSelectionAllowed(habilitar);
+        tblAlumnos.setCellSelectionEnabled(habilitar);
+    }
+
+    private void habilitarZonaModulos(boolean habilitar) {
+        txtCodigoModulo.setEnabled(habilitar);
+        txtNombreModulo.setEnabled(habilitar);
+        btnAnyadirModulo.setEnabled(habilitar);
+        btnImportarModulos.setEnabled(habilitar);
+        if (!habilitar)
+            btnEliminarModulo.setEnabled(habilitar);
+        if (modulos.size() > 0 && habilitar) {
+            btnVaciarTablaModulos.setEnabled(habilitar);
+        }
+        else{
+            btnVaciarTablaModulos.setEnabled(false);
+        }
+        tblModulos.clearSelection();
+        tblModulos.setEnabled(habilitar);
+        tblModulos.setRowSelectionAllowed(habilitar);
+        tblModulos.setColumnSelectionAllowed(habilitar);
+        tblModulos.setCellSelectionEnabled(habilitar);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnyadirAlumno;
     private javax.swing.JButton btnAnyadirModulo;
@@ -817,7 +865,7 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarModulo;
     private javax.swing.JButton btnGenerarAnexos;
     private javax.swing.ButtonGroup btnGrpTipoAnexo;
-    private javax.swing.JButton btnImportarAlumno;
+    private javax.swing.JButton btnImportarAlumnos;
     private javax.swing.JButton btnImportarModulos;
     private javax.swing.JButton btnVaciarTablaAlumnos;
     private javax.swing.JButton btnVaciarTablaModulos;

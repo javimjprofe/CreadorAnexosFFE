@@ -363,7 +363,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnEliminarAlumno" max="32767" attributes="0"/>
                       <Component id="btnVaciarTablaAlumnos" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnImportarAlumno" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnImportarAlumnos" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnAnyadirAlumno" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -384,7 +384,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="btnImportarAlumno" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnImportarAlumnos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnEliminarAlumno" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -455,12 +455,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarAlumnoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnImportarAlumno">
+        <Component class="javax.swing.JButton" name="btnImportarAlumnos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Importar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImportarAlumnoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImportarAlumnosActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnVaciarTablaAlumnos">
