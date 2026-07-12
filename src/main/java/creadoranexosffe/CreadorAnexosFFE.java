@@ -653,41 +653,56 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
         EscrituraDatos escrituraDatos;
         Date fechaSesion;
         Date fechaFirma;
+        boolean creaAnexos = true;
 
         try {
             if (codigoCiclo.isEmpty() || nombreCiclo.isEmpty() || grupo.isEmpty() || poblacion.isEmpty()) {
                 dialogoError = new DialogoError(this, true, "Todos los datos comunes deben estar rellenos");
                 dialogoError.setVisible(true);
-            } else {
-                fechaSesion = (Date) spnFechaSesion.getValue();
-                fechaFirma = (Date) spnFechaFirma.getValue();
-                datosComunes = new DatosComunes(codigoCiclo, nombreCiclo, (int) spnCurso.getValue(),
-                        (int) spnAnyoEscolarIni.getValue(), (int) spnAnyoEscolarFin.getValue(),
-                        grupo, poblacion, fechaSesion.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-                        fechaFirma.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-                fc = new JFileChooser();
-                fc.setCurrentDirectory(new File("."));
-                fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                seleccion = fc.showSaveDialog(this);
-                if (seleccion == fc.APPROVE_OPTION) {
-                    directorio = fc.getSelectedFile();
-                    if (rdbAnexoI.isSelected()) {
-                        if (!generarAnexosI(datosComunes, directorio)) {
-                            dialogoError = new DialogoError(this, true, "Ocurrió un error durante la generación de los anexos");
-                            dialogoError.setVisible(true);
-                            return;
-                        }
-                    } else {
-                        if (!generarAnexosII(datosComunes, directorio)) {
-                            dialogoError = new DialogoError(this, true, "Ocurrió un error durante la generación de los anexos");
-                            dialogoError.setVisible(true);
-                            return;
-                        }
+                return;
+            }
+
+            if (tblAlumnos.getModel().getRowCount() == 0) {
+                dialogoError = new DialogoError(this, true, "Al menos debe haber un alumno en el listado");
+                dialogoError.setVisible(true);
+                return;
+            }
+
+            if (rdbAnexoI.isSelected() && tblModulos.getModel().getRowCount() == 0) {
+                dialogoError = new DialogoError(this, true, "Al menos debe haber un módulo en el listado");
+                dialogoError.setVisible(true);
+                return;
+            }
+
+            fechaSesion = (Date) spnFechaSesion.getValue();
+            fechaFirma = (Date) spnFechaFirma.getValue();
+            datosComunes = new DatosComunes(codigoCiclo, nombreCiclo, (int) spnCurso.getValue(),
+                    (int) spnAnyoEscolarIni.getValue(), (int) spnAnyoEscolarFin.getValue(),
+                    grupo, poblacion, fechaSesion.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                    fechaFirma.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            fc = new JFileChooser();
+            fc.setCurrentDirectory(new File("."));
+            fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            seleccion = fc.showSaveDialog(this);
+            if (seleccion == fc.APPROVE_OPTION) {
+                directorio = fc.getSelectedFile();
+                if (rdbAnexoI.isSelected()) {
+                    if (!generarAnexosI(datosComunes, directorio)) {
+                        dialogoError = new DialogoError(this, true, "Ocurrió un error durante la generación de los anexos");
+                        dialogoError.setVisible(true);
+                        return;
+                    }
+                } else {
+                    if (!generarAnexosII(datosComunes, directorio)) {
+                        dialogoError = new DialogoError(this, true, "Ocurrió un error durante la generación de los anexos");
+                        dialogoError.setVisible(true);
+                        return;
                     }
                 }
-                dialogoFin = new DialogoFin(this, true);
-                dialogoFin.setVisible(true);
             }
+            dialogoFin = new DialogoFin(this, true);
+            dialogoFin.setVisible(true);
+
         } catch (Exception e) {
             dialogoError = new DialogoError(this, true, "Ocurrió un error durante la generación de los anexos");
             dialogoError.setVisible(true);
@@ -823,12 +838,12 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
         txtApellidosAlumno.setEnabled(habilitar);
         btnAnyadirAlumno.setEnabled(habilitar);
         btnImportarAlumnos.setEnabled(habilitar);
-        if (!habilitar)
+        if (!habilitar) {
             btnEliminarAlumno.setEnabled(habilitar);
+        }
         if (alumnos.size() > 0 && habilitar) {
             btnVaciarTablaAlumnos.setEnabled(habilitar);
-        }
-        else{
+        } else {
             btnVaciarTablaAlumnos.setEnabled(false);
         }
         tblAlumnos.clearSelection();
@@ -843,12 +858,12 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
         txtNombreModulo.setEnabled(habilitar);
         btnAnyadirModulo.setEnabled(habilitar);
         btnImportarModulos.setEnabled(habilitar);
-        if (!habilitar)
+        if (!habilitar) {
             btnEliminarModulo.setEnabled(habilitar);
+        }
         if (modulos.size() > 0 && habilitar) {
             btnVaciarTablaModulos.setEnabled(habilitar);
-        }
-        else{
+        } else {
             btnVaciarTablaModulos.setEnabled(false);
         }
         tblModulos.clearSelection();
