@@ -620,7 +620,7 @@ public class CreadorAnexosFFE extends javax.swing.JFrame {
             }
             for (Modulo modulo : modulosAAnyadir) {
                 if (!anyadirModulo(modulo.getCodigo(), modulo.getNombre())) {
-                    DialogoError dialogoError = new DialogoError(this, true, "El modulo debe tener nombre y apellidos");
+                    DialogoError dialogoError = new DialogoError(this, true, "El modulo debe tener código y nombre");
                     dialogoError.setVisible(true);
                 }
             }
