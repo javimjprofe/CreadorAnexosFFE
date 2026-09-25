@@ -28,6 +28,8 @@ public class RecopilacionDatos {
                     break;
                 String[] lineaDividida = linea.split(";");
                 //Nombre;Apellidos
+                if(lineaDividida.length != 2)
+                    return null;
                 alumnos.add(new Alumno(lineaDividida[0], lineaDividida[1]));
             }
             scanner.close();
@@ -51,6 +53,8 @@ public class RecopilacionDatos {
                     break;
                 String[] lineaDividida = linea.split(";");
                 //Codigo;Nombre
+                if(lineaDividida.length != 2)
+                    return null;
                 modulos.add(new Modulo(lineaDividida[0], lineaDividida[1]));                
             }
             scanner.close();
